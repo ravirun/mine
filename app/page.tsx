@@ -1,19 +1,29 @@
-import { getQueryClient, trpc } from "@/trpc/server";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import Client from "./Client";
-import { Suspense } from "react";
+"use client"
 
-export default async function Home() {
+import { Button } from "@/components/ui/button";
+import { useTRPC } from "@/trpc/client";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
-  const queryClient = getQueryClient()
-  void queryClient.prefetchQuery(trpc.createAiWebsite.queryOptions({ name: "client", description: "client", keywords: ["client"], pages: [{ name: "client", content: "client" }] }))
-  
+export default  function Home() {
+  const trpc = useTRPC()
+  const invokeInngest = useMutation(trpc.invokeInngest.mutationOptions({
+    onSuccess: (data) => {
+      toast.success("Inngest function invoked")
+      console.log(data)
+    },
+    onError: (error) => {
+      toast.error("Error invoking Inngest function")
+      console.error(error)
+    }
+  }))
+
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Suspense fallback={<div>Loading...</div>}>
-<Client/>
-</Suspense>
-    </HydrationBoundary>
+    <div>
+      <Button onClick={() => invokeInngest.mutate({ text: "hello" })} >
+        Invoke Inngest Function
+      </Button>
+    </div>
     
   );
 }

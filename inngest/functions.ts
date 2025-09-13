@@ -2,18 +2,28 @@ import z from "zod";
 import { inngest } from "./client";
 import { getSandboxId, lastAssistantTextMessaageContent } from "./utils";
 import { Sandbox } from "@e2b/code-interpreter";
-import { createAgent, createNetwork, createTool, openai } from '@inngest/agent-kit';
+import { createAgent, createNetwork, createTool, openai, type Tool } from '@inngest/agent-kit';
 import { PROMPT } from "@/prompt";
-export const helloWorld = inngest.createFunction(
-  { id: "hello-world" },
-  { event: "test/hello.world" },
+import { prisma } from "@/lib/db";
+
+interface AgentState {
+  summary: string;
+  files: {
+    [path: string]: string;
+  };
+}
+
+
+export const codeAgentFunction = inngest.createFunction(
+  { id: "code-agent" },
+  { event: "code-agent/run" },
   async ({ event, step }) => {
     const sandboxid = await step.run('get-sandbox-id', async () => {
       const sandbox = await Sandbox.create('mine-nextjs-test-2')
       return sandbox.sandboxId
     })
 
-    const codeAgent = createAgent({
+    const codeAgent = createAgent<AgentState>({
       name: "code-agent",
       system: PROMPT,
       description: "an exert coding agent that writes readable, maintainable, and efficient code. ",
@@ -65,7 +75,7 @@ export const helloWorld = inngest.createFunction(
           "button.tsx": "<p>Button Component</p>"
           }
           */
-          handler: async ({ files }, { step, network }) => {
+          handler: async ({ files }, { step, network }: Tool.Options<AgentState>) => {
             const newfiles = await step?.run('create-or-update-files', async () => {
               try {
                 const updatedFiles = network.state.data.files || []
@@ -124,7 +134,7 @@ export const helloWorld = inngest.createFunction(
       }
     });
 
-    const network = createNetwork({
+    const network = createNetwork<AgentState>({
       name: "code-agent-network",
       agents: [codeAgent],
       maxIter: 10,
@@ -138,18 +148,53 @@ export const helloWorld = inngest.createFunction(
     })
     const result = await network.run(event.data.value)
 
+    const isError = 
+    !result.state.data.summary || 
+    Object.keys(result.state.data.files || {}).length === 0;
+
     const sandboxUrl = await step.run('get-sandbox-url', async () => {
       const sandbox = await getSandboxId(sandboxid)
       const host = await sandbox.getHost(3000)
       return `https://${host}`
     })
+
+    const message = await step.run('save-result', async () => {
+      if (isError) {
+        return await prisma.message.create({
+          data: {
+            content: "something went wrong, please try again",
+            role: "ASSISTANT",
+            type: "ERROR",
+          },
+        })
+      }
+      const message = await prisma.message.create({
+        data: {
+          content: result.state.data.summary,
+          role: "ASSISTANT",
+          type: "RESULT",
+          fragments: {
+            create: {
+              sandboxUrl: sandboxUrl,
+              files: result.state.data.files,
+              title: "Mine",
+              summary: result.state.data.summary,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            }
+          }
+        },
+      })
+      return message
+    })
+
     return {
       url: sandboxUrl,
       title: "Mine",
       files: result.state.data.files,
       summary: result.state.data.summary,
-
-
+      messageId: message.id,
+      
       
      };
   },

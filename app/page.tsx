@@ -2,31 +2,34 @@
 
 import { Button } from "@/components/ui/button";
 import { useTRPC } from "@/trpc/client";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 export default  function Home() {
-  const [text, setText] = useState("")
+  const [value, setValue] = useState("")
   const trpc = useTRPC()
-  const invokeInngest = useMutation(trpc.invokeInngest.mutationOptions({
-    onSuccess: (data) => {
-      toast.success("Inngest function invoked")
-      console.log(data)
+  const {data:messages} = useQuery(trpc.messages.getMany.queryOptions())
+  const createMessage = useMutation(trpc.messages.create.mutationOptions({
+    onSuccess: () => {
+      toast.success("Message created")
     },
-    onError: (error) => {
-      toast.error("Error invoking Inngest function")
-      console.error(error)
+    onError: () => {
+      toast.error("Error creating message")
     }
   }))
 
   return (
     <div>
-      <Input value={text} onChange={(e) => setText(e.target.value)} />
-      <Button onClick={() => invokeInngest.mutate({value: text})} >
-        Invoke Inngest Function
+      <Input value={value} onChange={(e) => setValue(e.target.value)} />
+      <Button 
+      disabled={createMessage.isPending} 
+      onClick={() => createMessage.mutate({value: value})}
+      >
+        Create Message
       </Button>
+      {JSON.stringify(messages , null, 2)}
     </div>
     
   );

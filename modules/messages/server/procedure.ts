@@ -1,6 +1,7 @@
 import { inngest } from "@/inngest/client";
 import { prisma } from "@/lib/db";
 import { baseProcedure, createTRPCRouter } from "@/trpc/init";
+import { generateSlug } from "random-word-slugs";
 import z from "zod";
 
 export const messageRouter = createTRPCRouter({
@@ -22,13 +23,26 @@ export const messageRouter = createTRPCRouter({
             })
         )
         .mutation(async ({ input }) => {
-            const createdMessages = await prisma.message.create({
+            const project = await prisma.project.create({
                 data: {
-                    content: input.value,
-                    role: "USER",
-                    type: "RESULT",
+                    name: generateSlug(2, 
+                        {
+                            format: "kebab"
+                        }
+                    ),
+                    messages: {
+                        create: {
+                            content: input.value,
+                            role: "USER",
+                            type: "RESULT",
+                        },
+                    },
                 },
             });
+            if (!project) {
+                throw new Error("Project not found");
+            }
+
             await inngest.send({
                 name: "code-agent/run",
                 data: {

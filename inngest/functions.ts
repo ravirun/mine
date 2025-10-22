@@ -2,7 +2,7 @@ import z from "zod";
 import { inngest } from "./client";
 import { getSandboxId, lastAssistantTextMessaageContent } from "./utils";
 import { Sandbox } from "@e2b/code-interpreter";
-import { createAgent, createNetwork, createTool, openai, type Tool } from '@inngest/agent-kit';
+import { createAgent, createNetwork, createTool, gemini,  type Tool } from '@inngest/agent-kit';
 import { PROMPT } from "@/prompt";
 import { prisma } from "@/lib/db";
 
@@ -27,7 +27,7 @@ export const codeAgentFunction = inngest.createFunction(
       name: "code-agent",
       system: PROMPT,
       description: "an exert coding agent that writes readable, maintainable, and efficient code. ",
-      model: openai({ model: "gpt-4.1", defaultParameters: { temperature: 0.1 } }),
+      model: gemini({ model: "gemini-2.5-flash-lite"}),
       tools: [
         createTool({
           name: "terminal",
@@ -78,7 +78,7 @@ export const codeAgentFunction = inngest.createFunction(
           handler: async ({ files }, { step, network }: Tool.Options<AgentState>) => {
             const newfiles = await step?.run('create-or-update-files', async () => {
               try {
-                const updatedFiles = network.state.data.files || []
+                const updatedFiles = network.state.data.files || {}
                 const sandbox = await getSandboxId(sandboxid)
 
                 for (const file of files) {
@@ -91,7 +91,7 @@ export const codeAgentFunction = inngest.createFunction(
                 return `Error creating or updating files ${e}`
               }
             })
-            if (typeof newfiles === 'object') {
+            if (typeof newfiles === 'object' && Object.keys(newfiles).length > 0) {
               network.state.data.files = newfiles
             }
             return newfiles
@@ -110,12 +110,11 @@ export const codeAgentFunction = inngest.createFunction(
                 const contents = []
                 for (const file of files) {
                   const content = await sandbox.files.read(file)
-                  contents.push({ path: file, content: content })
+                  contents.push({ path: file, content })
                 }
                 return JSON.stringify(contents)
               } catch (e) {
-                return "Error reading files" + e
-
+                return `Error reading files ${e}`
               }
             })
           }
@@ -151,7 +150,6 @@ export const codeAgentFunction = inngest.createFunction(
     const isError = 
     !result.state.data.summary || 
     Object.keys(result.state.data.files || {}).length === 0;
-
     const sandboxUrl = await step.run('get-sandbox-url', async () => {
       const sandbox = await getSandboxId(sandboxid)
       const host = await sandbox.getHost(3000)
@@ -165,6 +163,7 @@ export const codeAgentFunction = inngest.createFunction(
             content: "something went wrong, please try again",
             role: "ASSISTANT",
             type: "ERROR",
+            projectId: event.data.projectId,
           },
         })
       }
@@ -173,6 +172,7 @@ export const codeAgentFunction = inngest.createFunction(
           content: result.state.data.summary,
           role: "ASSISTANT",
           type: "RESULT",
+          projectId: event.data.projectId,
           fragments: {
             create: {
               sandboxUrl: sandboxUrl,
@@ -194,8 +194,7 @@ export const codeAgentFunction = inngest.createFunction(
       files: result.state.data.files,
       summary: result.state.data.summary,
       messageId: message.id,
-      
-      
+      projectId: event.data.projectId,
      };
   },
 );

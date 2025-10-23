@@ -5,6 +5,7 @@ import { Sandbox } from "@e2b/code-interpreter";
 import { createAgent, createNetwork, createTool, gemini,  type Tool } from '@inngest/agent-kit';
 import { PROMPT } from "@/prompt";
 import { prisma } from "@/lib/db";
+import { JsonValue } from "@/lib/generated/prisma/runtime/library";
 
 interface AgentState {
   summary: string;
@@ -167,25 +168,23 @@ export const codeAgentFunction = inngest.createFunction(
           },
         })
       }
-      const message = await prisma.message.create({
+      const createdMessage = await prisma.message.create({
         data: {
           content: result.state.data.summary,
           role: "ASSISTANT",
           type: "RESULT",
           projectId: event.data.projectId,
-          fragments: {
+          fragment: {
             create: {
               sandboxUrl: sandboxUrl,
-              files: result.state.data.files,
               title: "Mine",
-              summary: result.state.data.summary,
-              createdAt: new Date(),
-              updatedAt: new Date(),
+              files: result.state.data.files
+        
             }
           }
         },
       })
-      return message
+      return createdMessage
     })
 
     return {

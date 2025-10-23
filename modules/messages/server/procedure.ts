@@ -1,55 +1,39 @@
-import { inngest } from "@/inngest/client";
 import { prisma } from "@/lib/db";
 import { baseProcedure, createTRPCRouter } from "@/trpc/init";
-import { generateSlug } from "random-word-slugs";
 import z from "zod";
+import { inngest } from "@/inngest/client";
 
 export const messageRouter = createTRPCRouter({
     getMany: baseProcedure
     .query(async () => {
-        const messages = await prisma.message.findMany(
-            {
-                orderBy: {
-                    updatedAt: "desc",
-                },  
-            }
-        );
+        const messages = await prisma.message.findMany({
+            orderBy: {
+                createdAt: "desc",
+            },
+        });
         return messages;
     }),
     create: baseProcedure
-        .input(
-            z.object({
-                value: z.string().min(1, { message: "message is required" }),
-            })
-        )
-        .mutation(async ({ input }) => {
-            const project = await prisma.project.create({
-                data: {
-                    name: generateSlug(2, 
-                        {
-                            format: "kebab"
-                        }
-                    ),
-                    messages: {
-                        create: {
-                            content: input.value,
-                            role: "USER",
-                            type: "RESULT",
-                        },
-                    },
-                },
-            });
-            if (!project) {
-                throw new Error("Project not found");
-            }
+    .input(z.object({
+        value: z.string().min(1, { message: "Message is required" }),
+    })
+    )
+    .mutation(async ({ input }) => {
+        const createdMessage = await prisma.message.create({
+            data: {
+                content: input.value,
+                role: "USER",
+                type: "RESULT",
+               
+            },
+        });
+        await inngest.send({
+            name: "code-agent/run",
+            data: {
+               value: input.value,
+            },
+        });
+        return createdMessage;
+    })
 
-            await inngest.send({
-                name: "code-agent/run",
-                data: {
-                    value: input.value,
-                    projectId: project.id
-                },
-            });
-            return project;
-        }),
 });

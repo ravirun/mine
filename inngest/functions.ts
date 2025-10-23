@@ -170,15 +170,17 @@ export const codeAgentFunction = inngest.createFunction(
       }
       const createdMessage = await prisma.message.create({
         data: {
+          projectId: event.data.projectId,
           content: result.state.data.summary,
           role: "ASSISTANT",
           type: "RESULT",
-          projectId: event.data.projectId,
-          fragment: {
+          fragments: {
             create: {
               sandboxUrl: sandboxUrl,
               title: "Mine",
-              files: result.state.data.files
+              files: result.state.data.files,
+              summary: result.state.data.summary,
+
         
             }
           }

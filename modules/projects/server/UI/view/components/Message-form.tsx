@@ -9,7 +9,7 @@ import { ArrowUpIcon, Loader2Icon } from "lucide-react"
 import { useTRPC } from "@/trpc/client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { useMutation, useQuery, useQueryClient, } from "@tanstack/react-query"
+import { queryOptions, useMutation, useQuery, useQueryClient, } from "@tanstack/react-query"
 import { Form, FormField, } from "@/components/ui/form"
 
 interface Props {
@@ -33,22 +33,21 @@ export const MessageForm = ({ projectId }: Props) => {
         },
     })
 
-    const createMessage = useMutation(trpc.messages.create.mutationOptions(
-        {
-            onSuccess: () => {
+    const createMessage = useMutation(trpc.messages.create.mutationOptions({
+            onSuccess: (data) => {
                 form.reset()
                 queryClient.invalidateQueries(
-                    trpc.messages.getMany.queryOptions({projectId})
+                   trpc.messages.getMany.queryOptions({ projectId: data.projectId })
                 )
                 // todo: invalidate usage status
-                
+
             },
             onError: (err) => {
                 // todo: redirect to pricing page if specific error
-                    toast.error("Error creating message" + err.message)
+                toast.error("Error creating message" + err.message)
             }
-        }
-    ))
+           
+        }))
 
     const [isFocused, setIsFocused] = useState(false)
     const isPending = createMessage.isPending
@@ -86,7 +85,7 @@ export const MessageForm = ({ projectId }: Props) => {
                                     (e) => {
                                         if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                                             e.preventDefault()
-                                            form.handleSubmit(onSubmit)()
+                                            form.handleSubmit(onSubmit)(e)
                                         }
                                     }
                                 }

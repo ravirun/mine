@@ -5,7 +5,7 @@ Intro & Demo
 0:00
 Imagine building your next startup with nothing more than a sentence. This is
 0:06
-Vibe, an AI powered app builder that makes that possible. And in this course,
+Mine, an AI powered app builder that makes that possible. And in this course,
 0:12
 you're going to learn how to build it yourself. Let's try it out by entering a
 0:17
@@ -73,7 +73,7 @@ explorer and see every line of code that was generated. Notice how I've got one
 3:21
 more credit left. Let's go ahead and spend it. Right beneath our homepage, we can find
 3:28
-all of our previously generated apps or vibes as we are going to call them.
+all of our previously generated apps or Mines as we are going to call them.
 3:35
 Let's click into the first one just to confirm it is still live and working.
 3:41
@@ -192,7 +192,7 @@ along, I'm giving you the option to use the exact version that I had at the
 9:36
 time. Right? So this is the latest version at the time of me making this tutorial. So I'm going to go ahead and
 9:43
-use this version. I'm going to create a project called a vibe. I'm going to
+use this version. I'm going to create a project called a Mine. I'm going to
 9:48
 select yes for TypeScript, yes for slint, yes for Tailwind, and I'm also
 9:54
@@ -208,13 +208,13 @@ only no option for me. And now let's just wait for our dependencies to install.
 10:24
 After our dependencies have installed, you're going to see a success message like this. What you have to do next is
 10:30
-you have to enter this directory with your terminal. So let's go ahead and do change directory vibe like this. And
+you have to enter this directory with your terminal. So let's go ahead and do change directory Mine like this. And
 10:38
 once you're inside of here, you can run the ls command to see a list of files inside. Before we run this project, I
 10:45
 want to set up our IDE, the place where we are going to write some code. For me,
 10:50
-that's going to be VS Code. So I'm going to go ahead and select open, and I will select my new Vibe project.
+that's going to be VS Code. So I'm going to go ahead and select open, and I will select my new Mine project.
 10:59
 Inside of here, you should be seeing a similar or the exact same file and
 11:04
@@ -432,7 +432,7 @@ is simply for those who want to learn uh how to follow a proper Git workflow. If
 22:23
 that is not something of interest to you, you don't have to do it at all.
 22:28
-Right? So I'm going to create a new repository called Vibe, and I'm going to set it to private. And I'm going to
+Right? So I'm going to create a new repository called Mine, and I'm going to set it to private. And I'm going to
 22:34
 create a new repository here. And then I'm going to go ahead and copy uh these
 22:40
@@ -477,7 +477,7 @@ use the link in the description or the link you can see on the screen to let the
 24:37
 you've created an account with Neon, go ahead and click create project. I'm going to go ahead and call my project
 24:44
-Vibe, and my database name will be Vibe as well. And then I'm going to click the
+Mine, and my database name will be Mine as well. And then I'm going to click the
 24:49
 connect button and I'm going to copy the snippet for my connection string. After that, I'm going to go inside of my
 24:56
@@ -1721,7 +1721,7 @@ inside with this simple code snippet. So let me go ahead here inside of source
 1:31:16
 and I will create a new folder called inest and I will create client.ts
 1:31:22
-and I will paste this inside. I'm going to call this vibe project or vibe
+and I will paste this inside. I'm going to call this Mine project or Mine
 1:31:28
 development something like that. basically the name of your project here and once you've
 1:31:34
@@ -2250,7 +2250,7 @@ ahead and obtain an AI key. If you're using Grock or Gemini, you have a free tie
 1:59:44
 work. Uh and Grock, I'm not sure. You can try. So, let's go ahead and let's create a new secret key. I'm going to
 1:59:51
-call this Vibe development. I will use the default project and I will select all permissions and I will create the
+call this Mine development. I will use the default project and I will select all permissions and I will create the
 1:59:58
 secret key. I will then copy this key and then what we have to do is we have to add that to our IDE I mean to our
 2:00:05
@@ -2917,7 +2917,7 @@ command. And the way we're going to do this is the following. Go inside of sandb
 2:35:52
 next.js like this. So I'm going to try and run B2B template
 2:36:00
-build here and I'm going to give this a name and I'm going to call it vibe next.js test. So that will be the first
+build here and I'm going to give this a name and I'm going to call it Mine next.js test. So that will be the first
 2:36:08
 thing I'm going to try. So in here you can see how uh it found the E2B docker
 2:36:14
@@ -2969,7 +2969,7 @@ command with a proper uh start command. So now in here, here's what we have to
 2:38:36
 do this. Basically uh we have to add
 2:38:42
-E2B template build-ame vibe next.js js
+E2B template build-ame Mine next.js js
 2:38:50
 test two dash cmd and you have to add
 2:38:55
@@ -3107,11 +3107,11 @@ basically where the configuration is now. Uh great. So before we move on now
 2:45:49
 let's go ahead inside of E2B inside of your project go inside of templates and refresh. And now if you have done this
 2:45:57
-correctly you should see vibe next.js test dash2 right here. And you can see
+correctly you should see Mine next.js test dash2 right here. And you can see
 2:46:04
 that this says private. So just to make things easier for now, I want you to do
 2:46:09
-the following. I want you to copy the ID of vibe next.js test 2 and I want you to
+the following. I want you to copy the ID of Mine next.js test 2 and I want you to
 2:46:16
 go and go to E2B template publish here.
 2:46:21
@@ -3135,7 +3135,7 @@ budget here. So, be careful. Make sure that only you know about this and later
 2:47:16
 I will make sure to find a way to unpublish this so that only you and your team can use this. Great. So now what
 2:47:24
-should happen is inside of your templates when you hit refresh and find that vibe nextjs test 2 it should say
+should happen is inside of your templates when you hit refresh and find that Mine nextjs test 2 it should say
 2:47:32
 public under visibility and that basically means you did it. This is now working. So now what we have to do is
 2:47:40
@@ -3171,7 +3171,7 @@ first step we're going to run. And in here, we're going to attempt to
 2:49:10
 get the sandbox by doing await sandbox.create.
 2:49:16
-And inside of here, you will simply pass the template ID. So in your case, this will be vibe next.js test 2. Now, you
+And inside of here, you will simply pass the template ID. So in your case, this will be Mine next.js test 2. Now, you
 2:49:25
 will probably have a different name for this because I think if they allow public templates, there probably has to
 2:49:31
@@ -3243,7 +3243,7 @@ the way I should. So let me just go ahead uh and add click on API key here.
 2:53:00
 Uh and we can find it at the dashboard. So let's go back inside of our dashboard here. Uh you can see I already have
 2:53:07
-some. So I'm going to click create new key here. And you can find it here under API keys. So create new key vibe dev.
+some. So I'm going to click create new key here. And you can find it here under API keys. So create new key Mine dev.
 2:53:15
 And I'm going to click create key here. I'm going to copy that key. And let's go inside of environment here. E2B and
 2:53:24
@@ -5647,7 +5647,7 @@ and margin bottom of two. Now I'm going to add to-do add logo because we don't
 5:02:36
 have it yet. And I'm going to add an image component here. Uh actually we can
 5:02:41
-do that only when we have the logo. So let's add a span for now and our app name. In my case this will be vibe text
+do that only when we have the logo. So let's add a span for now and our app name. In my case this will be Mine text
 5:02:49
 small and font medium like this. Then copy this span and in
 5:02:56
@@ -5681,7 +5681,7 @@ flex plex column and gap y of four. And inside of here, a span with content
 5:04:38
 inside. And let's go ahead and make sure we are using the assistant message. We are perfect. And there we go. You can
 5:04:45
-see build a yellow landing page. And then vibe answers at this time which only appears when I hover
+see build a yellow landing page. And then Mine answers at this time which only appears when I hover
 5:04:52
 with a task summary like this. Perfect. So now let's go ahead and continue uh
 5:05:00
@@ -5719,7 +5719,7 @@ card. Specifically in the assistant message, I added a to-do here. Now let's add
 5:06:49
 make sure you have added this import here. And then we're going to add the
 5:06:54
-following. Source will be forward/lo.svg. Alt will be vibe. Width will be 18.
+following. Source will be forward/lo.svg. Alt will be Mine. Width will be 18.
 5:07:04
 Height will be 18. and class name will be shrink
 5:07:09
@@ -7020,7 +7020,7 @@ one more thing. So let's actually create a folder code view like this and move
 6:18:47
 this inside. And you can change this to be index.tsx.
 6:18:56
-And then go inside of your uh vibe assets. You can use the link in the description or you can see it on the
+And then go inside of your uh Mine assets. You can use the link in the description or you can see it on the
 6:19:02
 screen here. And find code theme.css. So it's quite long. That's why we are not typing it. So go ahead and copy this
 6:19:10
@@ -8095,13 +8095,13 @@ Now inside of here I will add a div with a class name flex flex column and items
 7:17:37
 center. In here, we're going to render an image from next image with the source of logo
 7:17:45
-SVG out of vibe width of 50, height of
+SVG out of Mine width of 50, height of
 7:17:52
 50, class name of hidden MD block.
 7:17:58
 Outside of this div encapsulating that image, I will add an H1 build something
 7:18:04
-with vibe or the name of your project. And we're going to put this heading give
+with Mine or the name of your project. And we're going to put this heading give
 7:18:09
 this heading class name text to Excel medium text 5 Excel font bold and text
 7:18:18
@@ -8365,19 +8365,19 @@ large adding eight border flex X flex
 7:32:05
 column gap Y 6 SM gap Y4.
 7:32:10
-Then let's add an H2 element which will just say previous vibes or saved vibes.
+Then let's add an H2 element which will just say previous Mines or saved Mines.
 7:32:19
-I thought it would be fun to call old projects vibes because the project name is vibe, right? You can of course just
+I thought it would be fun to call old projects Mines because the project name is Mine, right? You can of course just
 7:32:26
 say old project, saved projects, whatever you want. So text to Excel and
 7:32:31
-font semi bold. Later this will say Antonio's vibes or whoever is logged in.
+font semi bold. Later this will say Antonio's Mines or whoever is logged in.
 7:32:36
 But since we don't have out yet, we can't display that just yet. So now let's just import the projects list
 7:32:43
 simply so we can start seeing the progress. So right here at the bottom
 7:32:48
-you should see saved vibes right here. It should look like this.
+you should see saved Mines right here. It should look like this.
 7:32:55
 So now let's go ahead below this and let's create a div with a class name of
 7:33:01
@@ -8407,7 +8407,7 @@ ID and then inside of here create a div
 7:34:22
 with a class name flex item center and gap x of four. Then add an image here
 7:34:29
-with a source of logo SVG out of vibe
+with a source of logo SVG out of Mine
 7:34:35
 width of 32 height of 32 and the class name object contain. Below the image,
 7:34:43
@@ -8423,7 +8423,7 @@ project updated at add suffix true and give the paragraph a
 7:35:19
 class name text small and text muted foreground and that is it. So in here now you can
 7:35:27
-see all of your previous vibes. So you can go ahead and visit them. And in here
+see all of your previous Mines. So you can go ahead and visit them. And in here
 7:35:32
 the source code is of course preserved. Great. So I believe that that marks the
 7:35:38
@@ -8753,7 +8753,7 @@ to implement in our project right now. So let's go ahead and do that. Once you c
 7:53:07
 redirected to the dashboard. And in here you can click create application. I'm
 7:53:12
-going to call this application Vibe. And I'm going to enable email and Google. You can of course enable all of these
+going to call this application Mine. And I'm going to enable email and Google. You can of course enable all of these
 7:53:19
 other providers if you want to. And I will click create application.
 7:53:24
@@ -8941,17 +8941,17 @@ Add a link inside with an href to a forward slash with a class name of flex
 8:03:29
 item center and gap of two. And in here render an image with a source
 8:03:37
-of logo SVG out of vibe width of 24 and
+of logo SVG out of Mine width of 24 and
 8:03:43
 height of 24 as well. Add a span with a
 8:03:49
-text vibe inside. Add a class name font semibold and text large like that.
+text Mine inside. Add a class name font semibold and text large like that.
 8:03:57
 And let's go ahead and let's go inside of our layout in app folder home layout
 8:04:06
 and let's render it just so we can start seeing some results. So navbar
 8:04:11
-from modules home UI components navbar and you should now see the vibe right
+from modules home UI components navbar and you should now see the Mine right
 8:04:17
 here at the top and the fun fact it should also appear if you go into out
 8:04:24
@@ -9535,7 +9535,7 @@ user from use user which you can import from clerk next.js. And then this will
 8:35:11
 allow us to do the following. We can then do user question mark first name
 8:35:17
-and then apostrophes users vibes and then in here also do if
+and then apostrophes users Mines and then in here also do if
 8:35:24
 there is no user return null. So we don't even load the project list if we
 8:35:30
@@ -9577,7 +9577,7 @@ Uh, great. So, I'm pretty sure that we
 8:37:26
 don't have to do anything more besides test the app. So now I'm going to log in here.
 8:37:32
-And as you can see, it says Jones Vibes and no projects found. And I will do
+And as you can see, it says Jones Mines and no projects found. And I will do
 8:37:37
 build a landing page here. And let's see, will I get any errors? I
 8:37:43
@@ -9778,7 +9778,7 @@ Then on this div encapsulating the image let's give it a class name of flex flex
 8:48:26
 column and items center. For the image itself, give it a source logo SVG, alt
 8:48:36
-vibe, width 50, and height 50 as well.
+Mine, width 50, and height 50 as well.
 8:48:42
 And give it a class name hidden MD block. Then in the H1, go ahead and add the
 8:48:49
@@ -9840,9 +9840,9 @@ Basically, whatever you plan to, you know, extend this application with, you can
 8:51:54
 like three editors per project. All right, just think of a bunch of features
 8:52:00
-you would add to your app. And let's do uh remove the vibe badge. Imagine that
+you would add to your app. And let's do uh remove the Mine badge. Imagine that
 8:52:07
-we would create some kind of feature that adds the vibe badge. And click save. And you can of course, you know,
+we would create some kind of feature that adds the Mine badge. And click save. And you can of course, you know,
 8:52:13
 drag and drop this however you like. I just wanted us to add a lot of features here simply because the the pricing
 8:52:20
@@ -11310,7 +11310,7 @@ have in the list here. So we learned about improving the error handling and now 
 10:12:50
 template private. So if you go inside of your E2B dashboard in here you can see your templates and you can see that my
 10:12:56
-Vibe Nex.js test 2 is currently public. That is because we have published it.
+Mine Nex.js test 2 is currently public. That is because we have published it.
 10:13:03
 The reason I told you to publish it is because I personally had problems with private uh templates. But what you can
 10:13:11
@@ -11324,7 +11324,7 @@ will read everything from here including your team ID. And just confirm that you
 10:13:36
 want to unpublish it. And what this does is the following. If you now go back here and refresh,
 10:13:43
-you will see that my vibe next.js test 2
+you will see that my Mine next.js test 2
 10:13:48
 is now set to private. And that means that inside of the functions on the ingest here, whenever someone tries to
 10:13:56
@@ -11489,7 +11489,7 @@ again if your initial one failed. Basically from here you have buttons to
 10:22:20
 go to project or to inspect deployment. You can click whichever one you like. Uh and from here you basically have your
 10:22:28
-project vibe. You can click here and there we go. You have deployments. the first deployment was failed and now the
+project Mine. You can click here and there we go. You have deployments. the first deployment was failed and now the
 10:22:35
 way another deployment will be triggered is simply whenever it notices a new push
 10:22:40
@@ -11565,7 +11565,7 @@ running some final uh things here, but down here you can see that we assigned a
 10:26:16
 custom domain and we have the deployment summary. So what I care about is the
 10:26:21
-custom domain. So what I recommend you do is you click on vibe up here and go
+custom domain. So what I recommend you do is you click on Mine up here and go
 10:26:26
 inside of overview and in here you will find all of your domains. Do not use the
 10:26:32
@@ -11613,7 +11613,7 @@ using GitHub simply so you always have access to your repositories if needed. An
 10:28:53
 at the bottom you can choose to switch organization. I recommend creating a new organization. So I'm going to call this
 10:28:59
-Vibe. And I will click create organization. And I'm not going to invite any members
+Mine. And I will click create organization. And I'm not going to invite any members
 10:29:05
 now. And let's go ahead and click on apps here.
 10:29:11
@@ -11627,11 +11627,11 @@ select this one where I just deployed the project and I will click continue.
 10:29:36
 And in here go ahead and find your new project.
 10:29:41
-So let me just find Vibe. Here it is. select it and click save configuration right here and click continue to the
+So let me just find Mine. Here it is. select it and click save configuration right here and click continue to the
 10:29:49
 ingest uh Verscell dashboard. And now somewhere in here you have all of your
 10:29:55
-Versel projects and you should now find Vibe and you can see it says enabled but
+Versel projects and you should now find Mine and you can see it says enabled but
 10:30:00
 in here it says deployment protection is enabled. Ingest may not be able to communicate with your application by
 10:30:07
@@ -11645,7 +11645,7 @@ let me just see does this take me to Verscel. It does take me to Versel here. Ba
 10:30:34
 think this is where I need to go. Let's go to versel and let's select our new project here.
 10:30:41
-Let's go inside of settings and let's go inside of deployment protection. Here it is. So go inside of your vibe settings
+Let's go inside of settings and let's go inside of deployment protection. Here it is. So go inside of your Mine settings
 10:30:47
 deployment protection. And in here let's go ahead and let's do protection
 10:30:55
@@ -11663,7 +11663,7 @@ to access your uh Versell application. And let's go ahead and do one more thing
 10:31:33
 here. So now I want to go back here to production. And in here, there we go. You can see
 10:31:39
-that my app was already found vibe development on Versel. So this is a good
+that my app was already found Mine development on Versel. So this is a good
 10:31:45
 sign. And it has found one function code agent. So I think that this means that
 10:31:50
@@ -11689,7 +11689,7 @@ wrap up this project. And here I have the result. So, it seems
 10:32:51
 to be working. This is entirely in production. So my URL is
 10:32:56
-vibe-bond.cell.app. And if you check the cloud here, there
+Mine-bond.cell.app. And if you check the cloud here, there
 10:33:02
 we go. It seems to be working. Uh if it still says running, just do a refresh and it should update the status. Here we
 10:33:09

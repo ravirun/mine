@@ -3,11 +3,12 @@
 import { useTRPC } from "@/trpc/client"
 import { useSuspenseQuery } from "@tanstack/react-query"
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
-import { MessagesContainer } from "@/modules/projects/server/UI/view/components/MessagesContainer"
+import { MessagesContainer } from "@/modules/projects/server/ui/view/components/MessagesContainer"
 import { Suspense } from "react"
 import { Fragment } from "@/lib/generated/prisma"
 import { useState } from "react"
-import { ProjectHeader } from "@/modules/projects/server/UI/view/components/project-header"
+import { ProjectHeader } from "@/modules/projects/server/ui/view/components/project-header"
+import { FragmentWeb } from "@/modules/projects/server/ui/view/components/Fragment-web"
 
 
 interface ProjectViewProps {
@@ -30,7 +31,7 @@ export const ProjectView = ({ projectId }: ProjectViewProps) => {
                 </ResizablePanel>
                 <ResizableHandle withHandle />
                 <ResizablePanel defaultSize={65} minSize={50}>
-                    Todo Preview
+                   {!!activeFragment && <FragmentWeb data={activeFragment} />}
                 </ResizablePanel>
             </ResizablePanelGroup>
         </div>

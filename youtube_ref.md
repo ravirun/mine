@@ -1,6 +1,3 @@
-Transcript
-
-
 Intro & Demo
 0:00
 Imagine building your next startup with nothing more than a sentence. This is

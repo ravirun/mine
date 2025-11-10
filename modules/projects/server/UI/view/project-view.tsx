@@ -1,7 +1,4 @@
 "use client"
-
-import { useTRPC } from "@/trpc/client"
-import { useSuspenseQuery } from "@tanstack/react-query"
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 import { MessagesContainer } from "@/modules/projects/server/ui/view/components/MessagesContainer"
 import { Suspense } from "react"

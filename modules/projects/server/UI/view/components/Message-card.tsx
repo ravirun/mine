@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge"
-import { Fragment, MessageRole, MessageType } from "@/lib/generated/prisma"
+import type { Fragment } from "@/lib/generated/prisma"
+import { MessageRole, MessageType } from "@/lib/generated/prisma"
 import { Card, CardContent } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"

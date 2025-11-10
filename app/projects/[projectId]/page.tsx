@@ -1,4 +1,4 @@
-import { ProjectView } from "@/modules/projects/server/ui/view/project-view"
+import { ProjectView } from "@/modules/projects/server/UI/view/project-view"
 import { getQueryClient, trpc } from "@/trpc/server"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 import { Suspense } from "react"    
@@ -7,7 +7,6 @@ interface ProjectPageProps {
         projectId: string
     }>
 }
-
 export default async function ProjectPage({ params }: ProjectPageProps) {
     const { projectId } = await params
     const queryClient = getQueryClient()

@@ -1,11 +1,11 @@
 "use client"
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
-import { MessagesContainer } from "@/modules/projects/server/ui/view/components/MessagesContainer"
+import { MessagesContainer } from "@/modules/projects/server/UI/view/components/MessagesContainer"
 import { Suspense } from "react"
 import { Fragment } from "@/lib/generated/prisma"
 import { useState } from "react"
-import { ProjectHeader } from "@/modules/projects/server/ui/view/components/project-header"
-import { FragmentWeb } from "@/modules/projects/server/ui/view/components/Fragment-web"
+import { ProjectHeader } from "@/modules/projects/server/UI/view/components/project-header"
+import { FragmentWeb } from "@/modules/projects/server/UI/view/components/Fragment-web"
 
 
 interface ProjectViewProps {

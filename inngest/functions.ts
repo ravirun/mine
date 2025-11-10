@@ -5,7 +5,6 @@ import { Sandbox } from "@e2b/code-interpreter";
 import { createAgent, createNetwork, createTool, gemini,  type Tool } from '@inngest/agent-kit';
 import { PROMPT } from "@/prompt";
 import { prisma } from "@/lib/db";
-import { JsonValue } from "@/lib/generated/prisma/runtime/library";
 
 interface AgentState {
   summary: string;

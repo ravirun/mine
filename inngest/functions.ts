@@ -17,10 +17,17 @@ export const codeAgentFunction = inngest.createFunction(
   { id: "code-agent" },
   { event: "code-agent/run" },
   async ({ event, step }) => {
+    if (!event?.data) {
+      throw new Error("Missing event data");
+    }
+
+    console.log(step)
     const sandboxid = await step.run('get-sandbox-id', async () => {
       const sandbox = await Sandbox.create('mine-nextjs-test-2')
       return sandbox.sandboxId
     })
+
+    console.log(sandboxid)
 
     const codeAgent = createAgent<AgentState>({
       name: "code-agent",
@@ -135,7 +142,7 @@ export const codeAgentFunction = inngest.createFunction(
     const network = createNetwork<AgentState>({
       name: "code-agent-network",
       agents: [codeAgent],
-      maxIter: 10,
+      maxIter: 1,
       router: async ({ network }) => {
         const summary = network.state.data.summary
         if (summary) {
@@ -144,7 +151,10 @@ export const codeAgentFunction = inngest.createFunction(
         return codeAgent;
       }
     })
-    const result = await network.run(event.data.value)
+
+    console.log(event.data.value)
+    const result = await network.run(event.data.value )
+
 
     const isError = 
     !result.state.data.summary || 

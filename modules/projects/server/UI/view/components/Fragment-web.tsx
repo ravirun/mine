@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { Fragment } from "@/lib/generated/prisma"
 import { fa } from "zod/v4/locales"
-import { Hint } from "../../hint"
+import { Hint } from "@/components/hint"
 
 interface FragmentWebProps {
     data: Fragment

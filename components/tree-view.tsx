@@ -1,5 +1,5 @@
 import { TreeItem } from "@/types"
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarMenuSub, SidebarProvider, SidebarTrigger, SidebarRail } from "@/components/ui/sidebar"
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent,  SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarMenuSub, SidebarProvider,  SidebarRail } from "@/components/ui/sidebar"
 import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 

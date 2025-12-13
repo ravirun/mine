@@ -1,10 +1,10 @@
 import { CopyCheckIcon, CopyIcon } from "lucide-react";
-import { useCallback, useMemo, useRef, useState, Fragment } from "react";
+import { useCallback, useMemo, useState, Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { Hint } from "@/components/hint";
 import { CodeView } from "@/components/code-view";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
-import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem,  BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { convertFilesToTreeItems } from "@/lib/utils";
 import { TreeView } from "@/components/tree-view";
 
